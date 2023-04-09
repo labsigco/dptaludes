@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import *
+from Aplicaciones.Gestion.models import *
 
 # Register your models here.
 admin.site.register(Cez)
@@ -16,10 +16,10 @@ admin.site.register(Deslizamiento)
 admin.site.register(ElemExpuestos)
 admin.site.register(Afectacion)
 admin.site.register(Cobertura)
-admin.site.register(Tipoactividad)
-admin.site.register(Tipoproceso)
+admin.site.register(TipoActividad)
+admin.site.register(TipoProceso)
 admin.site.register(TipoTalud)
-admin.site.register(Tipoclima)
+admin.site.register(TipoClima)
 admin.site.register(FactoresContr)
 admin.site.register(FactoresDeton)
 admin.site.register(Obras)

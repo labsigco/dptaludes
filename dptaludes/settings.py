@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Aplicaciones.GEstion'  
+    'Aplicaciones.Gestion'
 ]
 
 MIDDLEWARE = [
@@ -78,10 +78,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'dptaludes',
-        'USER': 'postgres'
-        'PASSWORD': 'pg123'
-        'HOST': '127.0.0.1'
-        'DATABASE_PORT': '5432'
+        'USER': 'postgres',
+        'PASSWORD': 'pg123',
+        'HOST': '127.0.0.1',
+        'DATABASE_PORT': '5433'
     }
 }
 

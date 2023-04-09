@@ -6,14 +6,22 @@ class Cez(models.Model):
     codigo = models.PositiveSmallIntegerField(primary_key=True)
     nombre = models.CharField(max_length=40,null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.nombre)
 
 class Comcorr(models.Model):
     nombre = models.CharField(max_length=120,null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.nombre)
 
 
 class Barrver(models.Model):
     nombre = models.CharField(max_length=120,null=False, blank=False)
     nomcomun = models.CharField(max_length=120)
+
+    def __str__(self):
+        return "{0}".format(self.nombre)
 
 
 class Persona(models.Model):
@@ -29,6 +37,9 @@ class Persona(models.Model):
         txt = "{0} {1}, {2}"
         return txt.format(self.apellido1, self.apellido2, self.nombres)
 
+    def __str__(self):
+        return self.nombrecompleto()
+
 
 class PersonaDiger(models.Model):
     identificacion = models.CharField(primary_key=True, max_length=20)
@@ -43,12 +54,18 @@ class PersonaDiger(models.Model):
         txt = "{0} {1}, {2}"
         return txt.format(self.apellido1, self.apellido2, self.nombres)
 
+    def __str__(self):
+        return self.nombrecompleto()
+
 
 class Geologia(models.Model):
     unidad = models.CharField(max_length=40, null=False, blank=False)
     peso = models.FloatField(null=False, blank=False)
     leyenda = models.CharField(max_length=120, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.unidad)
 
 
 class Litologia(models.Model):
@@ -57,6 +74,9 @@ class Litologia(models.Model):
     leyenda = models.CharField(max_length=120, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.unidad)
+
 
 class Pendiente(models.Model):
     rango = models.CharField(max_length=40, null=False, blank=False)
@@ -64,11 +84,17 @@ class Pendiente(models.Model):
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.rango)
+
 
 class Freatico(models.Model):
     posicion = models.CharField(max_length=40, null=False, blank=False)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.posicion)
 
 
 class Erosion(models.Model):
@@ -76,11 +102,17 @@ class Erosion(models.Model):
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.tipoerosion)
+
 
 class Deslizamiento(models.Model):
     tipodeslizam = models.CharField(max_length=80, null=False, blank=False)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.tipodeslizam)
 
 
 class ElemExpuestos(models.Model):
@@ -88,10 +120,16 @@ class ElemExpuestos(models.Model):
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.elemexpuestos)
+
 
 class Afectacion(models.Model):
     afectacion = models.CharField(max_length=80, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.afectacion)
 
 
 class Cobertura(models.Model):
@@ -99,46 +137,72 @@ class Cobertura(models.Model):
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.cobertura)
+
 
 class TipoActividad(models.Model):
     actividad = models.CharField(max_length=40, null=False, blank=False)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.actividad)
 
 class TipoProceso(models.Model):
     tipo = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.tipo)
 
 
 class TipoTalud(models.Model):
     tipo = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.tipo)
+
 
 class TipoClima(models.Model):
     clima = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.clima)
 
 
 class FactoresContr(models.Model):
     fcontribuyente = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.fcontribuyente)
+
 
 class FactoresDeton(models.Model):
     fdetonante = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.fdetonante)
 
 
 class Obras(models.Model):
     obra = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
+    def __str__(self):
+        return "{0}".format(self.obra)
+
 
 class Psicos(models.Model):
     psico = models.CharField(max_length=40, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.psico)
 
 
 class Taludes(models.Model):

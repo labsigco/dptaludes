@@ -8,21 +8,43 @@ class Cez(models.Model):
 
     def __str__(self):
         return "{0}".format(self.nombre)
-
-class Comcorr(models.Model):
-    nombre = models.CharField(max_length=120,null=False, blank=False)
+class TipoComcorr(models.Model):
+    tipo = models.CharField(max_length=40,null=False, blank=False)
 
     def __str__(self):
-        return "{0}".format(self.nombre)
+        return "{0}".format(self.tipo)
+
+class TipoBarrver(models.Model):
+    tipo = models.CharField(max_length=40, null=False, blank=False)
+
+    def __str__(self):
+        return "{0}".format(self.tipo)
+
+class Comcorr(models.Model):
+    id = models.CharField(primary_key=True)
+    nombre = models.CharField(max_length=120, null=False, blank=False)
+    tipo = models.ForeignKey(TipoComcorr, null=False, blank=False, on_delete=models.CASCADE, default=None)
+
+    def nombrecompleto(self):
+        txt = "{0} {1}"
+        return txt.format(self.tipo, self.nombre)
+
+    def __str__(self):
+        return self.nombrecompleto()
 
 
 class Barrver(models.Model):
     nombre = models.CharField(max_length=120,null=False, blank=False)
+    tipo = models.ForeignKey(TipoBarrver, null=False, blank=False, default='0', on_delete=models.CASCADE)
     nomcomun = models.CharField(max_length=120)
+    comcorr = models.ForeignKey(Comcorr, null=False, blank=False, on_delete=models.CASCADE, default=None)
+
+    def nombrecompleto(self):
+        txt = "{0} {1}"
+        return txt.format(self.tipo, self.nombre)
 
     def __str__(self):
-        return "{0}".format(self.nombre)
-
+        return self.nombrecompleto()
 
 class Persona(models.Model):
     identificacion = models.CharField(primary_key=True, max_length=20)

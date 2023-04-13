@@ -4,6 +4,8 @@ from Aplicaciones.Gestion.models import *
 # Register your models here.
 admin.site.register(Cez)
 admin.site.register(Comcorr)
+admin.site.register(TipoBarrver)
+admin.site.register(TipoComcorr)
 admin.site.register(Barrver)
 admin.site.register(Persona)
 admin.site.register(PersonaDiger)

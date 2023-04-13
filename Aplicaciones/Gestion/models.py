@@ -32,7 +32,7 @@ class Persona(models.Model):
     telefono = models.CharField(max_length=10,null=False, blank=False)
     email = models.CharField(max_length=40)
 
-    @property
+
     def nombrecompleto(self):
         txt = "{0} {1}, {2}"
         return txt.format(self.apellido1, self.apellido2, self.nombres)
@@ -49,7 +49,7 @@ class PersonaDiger(models.Model):
     telefono = models.CharField(max_length=10,null=False, blank=False)
     email = models.CharField(max_length=40,null=False, blank=False)
 
-    @property
+
     def nombrecompleto(self):
         txt = "{0} {1}, {2}"
         return txt.format(self.apellido1, self.apellido2, self.nombres)
@@ -219,7 +219,7 @@ class Taludes(models.Model):
     alto = models.FloatField(null=False, blank=False)
     pendiente = models.ForeignKey(Pendiente, null=False, blank=False, on_delete=models.CASCADE)
     tipotalud = models.ForeignKey(TipoTalud, null=False, blank=False, on_delete=models.CASCADE)
-    observaciones = models.CharField(500)
+    observaciones = models.CharField(max_length=500)
     foto1 = models.URLField(max_length=500)
     foto2 = models.URLField(max_length=500)
     foto3 = models.URLField(max_length=500)

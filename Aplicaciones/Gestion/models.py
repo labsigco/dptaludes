@@ -4,25 +4,26 @@ from django.db import models
 
 class Cez(models.Model):
     codigo = models.PositiveSmallIntegerField(primary_key=True)
-    nombre = models.CharField(max_length=40,null=False, blank=False)
+    nombre = models.CharField(max_length=40,null=False, blank=False, unique=True)
 
     def __str__(self):
         return "{0}".format(self.nombre)
+
 class TipoComcorr(models.Model):
-    tipo = models.CharField(max_length=40,null=False, blank=False)
+    tipo = models.CharField(max_length=40,null=False, blank=False, unique=True)
 
     def __str__(self):
         return "{0}".format(self.tipo)
 
 class TipoBarrver(models.Model):
-    tipo = models.CharField(max_length=40, null=False, blank=False)
+    tipo = models.CharField(max_length=40, null=False, blank=False, unique=True)
 
     def __str__(self):
         return "{0}".format(self.tipo)
 
 class Comcorr(models.Model):
     id = models.CharField(primary_key=True)
-    nombre = models.CharField(max_length=120, null=False, blank=False)
+    nombre = models.CharField(max_length=120, null=False, blank=False, unique=True)
     tipo = models.ForeignKey(TipoComcorr, null=False, blank=False, on_delete=models.CASCADE, default=None)
 
     def nombrecompleto(self):
@@ -81,7 +82,7 @@ class PersonaDiger(models.Model):
 
 
 class Geologia(models.Model):
-    unidad = models.CharField(max_length=40, null=False, blank=False)
+    unidad = models.CharField(max_length=40, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     leyenda = models.CharField(max_length=120, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
@@ -91,7 +92,7 @@ class Geologia(models.Model):
 
 
 class Litologia(models.Model):
-    unidad = models.CharField(max_length=120, null=False, blank=False)
+    unidad = models.CharField(max_length=120, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     leyenda = models.CharField(max_length=120, null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
@@ -101,7 +102,7 @@ class Litologia(models.Model):
 
 
 class Pendiente(models.Model):
-    rango = models.CharField(max_length=40, null=False, blank=False)
+    rango = models.CharField(max_length=40, null=False, blank=False, unique=True)
     categoria = models.CharField(max_length=40, null=False, blank=False)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
@@ -111,7 +112,7 @@ class Pendiente(models.Model):
 
 
 class Freatico(models.Model):
-    posicion = models.CharField(max_length=40, null=False, blank=False)
+    posicion = models.CharField(max_length=40, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -120,7 +121,7 @@ class Freatico(models.Model):
 
 
 class Erosion(models.Model):
-    tipoerosion = models.CharField(max_length=80, null=False, blank=False)
+    tipoerosion = models.CharField(max_length=80, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -129,7 +130,7 @@ class Erosion(models.Model):
 
 
 class Deslizamiento(models.Model):
-    tipodeslizam = models.CharField(max_length=80, null=False, blank=False)
+    tipodeslizam = models.CharField(max_length=80, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -138,7 +139,7 @@ class Deslizamiento(models.Model):
 
 
 class ElemExpuestos(models.Model):
-    elemexpuestos = models.CharField(max_length=80, null=False, blank=False)
+    elemexpuestos = models.CharField(max_length=80, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -147,7 +148,7 @@ class ElemExpuestos(models.Model):
 
 
 class Afectacion(models.Model):
-    afectacion = models.CharField(max_length=80, null=False, blank=False)
+    afectacion = models.CharField(max_length=80, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -155,7 +156,7 @@ class Afectacion(models.Model):
 
 
 class Cobertura(models.Model):
-    cobertura = models.CharField(max_length=40, null=False, blank=False)
+    cobertura = models.CharField(max_length=40, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -164,7 +165,7 @@ class Cobertura(models.Model):
 
 
 class TipoActividad(models.Model):
-    actividad = models.CharField(max_length=40, null=False, blank=False)
+    actividad = models.CharField(max_length=40, null=False, blank=False, unique=True)
     peso = models.FloatField(null=False, blank=False)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
@@ -172,7 +173,7 @@ class TipoActividad(models.Model):
         return "{0}".format(self.actividad)
 
 class TipoProceso(models.Model):
-    tipo = models.CharField(max_length=40, null=False, blank=False)
+    tipo = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -180,7 +181,7 @@ class TipoProceso(models.Model):
 
 
 class TipoTalud(models.Model):
-    tipo = models.CharField(max_length=40, null=False, blank=False)
+    tipo = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -188,7 +189,7 @@ class TipoTalud(models.Model):
 
 
 class TipoClima(models.Model):
-    clima = models.CharField(max_length=40, null=False, blank=False)
+    clima = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -196,7 +197,7 @@ class TipoClima(models.Model):
 
 
 class FactoresContr(models.Model):
-    fcontribuyente = models.CharField(max_length=40, null=False, blank=False)
+    fcontribuyente = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -204,7 +205,7 @@ class FactoresContr(models.Model):
 
 
 class FactoresDeton(models.Model):
-    fdetonante = models.CharField(max_length=40, null=False, blank=False)
+    fdetonante = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -220,7 +221,7 @@ class Obras(models.Model):
 
 
 class Psicos(models.Model):
-    psico = models.CharField(max_length=40, null=False, blank=False)
+    psico = models.CharField(max_length=40, null=False, blank=False, unique=True)
     descripcion = models.CharField(max_length=120, null=False, blank=False)
 
     def __str__(self):
@@ -228,6 +229,7 @@ class Psicos(models.Model):
 
 
 class Taludes(models.Model):
+    codigo = models.CharField(primary_key=True, max_length=20,default=None)
     cez = models.ForeignKey(Cez, null=False, blank=False, on_delete=models.CASCADE)
     comcorr = models.ForeignKey(Comcorr, null=False, blank=False, on_delete=models.CASCADE)
     barrver = models.ForeignKey(Barrver, null=False, blank=False, on_delete=models.CASCADE)

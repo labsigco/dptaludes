@@ -5,4 +5,4 @@ from .models import Taludes
 # Create your views here.
 def home(request):
     taludesListados = Taludes.objects.all()
-    return render(request, "GestionTaludes.html", {"cursos": taludesListados})
+    return render(request, "GestionTaludes.html", {"taludes": taludesListados })

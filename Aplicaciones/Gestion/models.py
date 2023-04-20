@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 # Create your models here.
 
@@ -228,6 +229,9 @@ class Psicos(models.Model):
 
 
 class Taludes(models.Model):
+    codigo = models.CharField(primary_key=True, max_length=6, default=None)
+    fechaalta = models.DateField(null=False, blank=False, default=date.today)
+    fechabaja = models.DateField(null=True, blank=True)
     cez = models.ForeignKey(Cez, null=False, blank=False, on_delete=models.CASCADE)
     comcorr = models.ForeignKey(Comcorr, null=False, blank=False, on_delete=models.CASCADE)
     barrver = models.ForeignKey(Barrver, null=False, blank=False, on_delete=models.CASCADE)
@@ -246,6 +250,13 @@ class Taludes(models.Model):
     foto2 = models.URLField(max_length=500)
     foto3 = models.URLField(max_length=500)
     url_datos = models.URLField(max_length=500)
+
+    def nombrecompleto(self):
+        txt = "{0}: {1}, {2}"
+        return txt.format(self.codigo, self.comcorr, self.barrver)
+
+    def __str__(self):
+        return self.nombrecompleto()
 
 
 class VisitasTalud(models.Model):
